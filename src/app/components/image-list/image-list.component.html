@@ -1,4 +1,4 @@
-<ul class="mt-20 mx-10 w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-    <li routerLink="/images/2" class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600">Profile</li>
-    <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600">Settings</li>
+<ul  class="mt-20 mx-10 w-100 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <li  *ngFor="let image of images" class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600" routerLink="/images/{{image.id}}">{{image.title}}</li>
 </ul>
+<app-button routerLink="/images/new" text="add-image" color="blue"></app-button>

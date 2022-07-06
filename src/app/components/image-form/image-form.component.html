@@ -1,0 +1,15 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="title" class="mr-3">title</label>
+    <input  type="text"  [(ngModel)]="title" id="title" name="title">
+  </div>
+  <div class="mb-3">
+    <label for="date" class="mr-3">date</label>
+    <input type="number" [(ngModel)]="date" id="date" name="date" />
+  </div>
+  <div>
+    <label for="image" class="mr-3">image Url</label>
+    <input type="text"  [(ngModel)]="imageUrl" id="image" name="image"/>
+  </div>
+  <button type="submit" value="add" class="text-white bg-sky-500 p-2 rounded mt-4">add</button>
+</form>

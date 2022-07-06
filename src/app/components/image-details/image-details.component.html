@@ -1,11 +1,11 @@
-<div class="flex flex-row">
+<div class="flex flex-row" *ngIf="image">
   <div class="">
-    <img class="w-60 ml-5" src="https://image.shutterstock.com/image-photo/caribbean-sea-surface-summer-wave-260nw-400278007.jpg"  alt="image here"/>
+    <img class="w-60 ml-5" src="{{image.imageUrl}}"  alt="image here"/>
   </div>
   <div class="ml-20">
     <ul>
-      <li>title</li>
-      <li>source</li>
+      <li>{{image.title}}</li>
+      <li>{{image.date}}</li>
     </ul>
   </div>
 </div>

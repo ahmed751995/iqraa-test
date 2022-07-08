@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iqraa-a2273": {
+      "hosting": {
+        "iqraa": [
+          "iqraa-a2273"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iqraa-a2273"
+  }
+}

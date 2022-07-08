@@ -1,2 +1,4 @@
-<div [froalaEditor]></div>
+<div [froalaEditor] [(froalaModel)]="editorContent"></div>
+
 <app-button color="blue" text="save"></app-button>
+{{editorContent}}

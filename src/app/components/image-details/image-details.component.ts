@@ -23,6 +23,7 @@ export class ImageDetailsComponent implements OnInit {
 	console.log(data['id'])
 	this.image = data
       })
+      .catch(err => console.log(err))
       // .subscribe(
       // 	image => {
       // 	this.image = image
@@ -32,8 +33,17 @@ export class ImageDetailsComponent implements OnInit {
       // 	});
   }
 
-  onDeleteImage(): void {
-    this.imageService.deleteImage(parseInt(this.id)).subscribe(() => this.router.navigate(['/images']))
+  onDeleteImage(id: string): void {
+    // console.log(id)
+    this.imageService.deleteImage(this.id)
+      .then(() =>this.router.navigate(['/images']))
+      .catch(err => console.log(err))
+
+      // .subscribe(() => this.router.navigate(['/images']))
+  }
+
+  onEditImage(id: string): void {
+    this.router.navigate([`/images/edit/${id}`])
   }
 
 }

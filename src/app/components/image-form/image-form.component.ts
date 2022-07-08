@@ -9,7 +9,7 @@ import { ImageService } from '../../services/image.service';
   styleUrls: ['./image-form.component.css']
 })
 export class ImageFormComponent implements OnInit {
-  id!: string;
+  id: string = '-1';
   title: string = '';
   date!: number;
   imageUrl: string = '';
@@ -20,6 +20,13 @@ export class ImageFormComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id') || '-1';
     if(this.id !== '-1') {
+      this.imageService.getImage(this.id)
+	.then(image => {
+	  this.id = image.id!;
+	  this.title = image.title!;
+	  this.date = image.date!;
+	  this.imageUrl =image.imageUrl!;
+	})
       // this.imageService.getImage(parseInt(this.id)).subscribe(image => {
       // 	this.title = image.title;
       // 	this.date = image.date;
@@ -29,18 +36,21 @@ export class ImageFormComponent implements OnInit {
   }
 
   onSubmit() {
+    const image: any = {
+      id: this.id,
+      title: this.title,
+      date: this.date,
+      imageUrl: this.imageUrl
+    }
     if(this.id === '-1') {
-      const image: Image = {
-	title: this.title,
-	date: this.date,
-	imageUrl: this.imageUrl
-      }
       // this.imageService.insertImage(image).subscribe((image) => {
       // 	this.router.navigate(['/images/${image.id}'])
       // })
       this.imageService.insertImage(image).then(resp => console.log(resp));
     } else {
-      console.log('edit image')
+      this.imageService.editImage(image)
+	.then(() => this.router.navigate([`/images/${image.id}`]))
+	.catch(err => console.log(err))
     }
   }
 

@@ -3,7 +3,6 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
     }
     this.auth.SignIn(value)
       .then((resp) =>  {
-	console.log("resp", resp)
+	console.log("resp", resp.user)
 	this.router.navigate(['/'])
       })
       .catch((error) => {

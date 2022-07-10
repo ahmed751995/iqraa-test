@@ -29,6 +29,7 @@ export class AuthenticationService {
   }
 
   isLoggedIn() {
-    return !!localStorage.getItem('user')
+    if(this.auth.currentUser) return true;
+    else return false;
   }
 }

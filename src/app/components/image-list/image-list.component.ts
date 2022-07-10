@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Image } from './Image';
 import { ImageService } from '../../services/image.service';
+import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-image-list',
@@ -9,9 +10,10 @@ import { ImageService } from '../../services/image.service';
 })
 export class ImageListComponent implements OnInit {
   images!:any;
-  constructor( private imageService: ImageService) { }
+  constructor( private imageService: ImageService,public auth: Auth) { }
 
   ngOnInit(): void {
+    console.log(this.auth.currentUser)
     this.imageService.getImages()
       .then(images => this.images = images);
       // .then(images => this.images = images)
